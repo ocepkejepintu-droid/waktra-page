@@ -1,0 +1,50 @@
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource-variable/instrument-sans';
+
+/* Partitur: a printed score on bone paper. Ink does the work; crimson (the third note) is the only voice. */
+:root {
+  color-scheme: light;
+  --display: 'Instrument Serif', Georgia, serif;
+  --body: 'Instrument Sans Variable', system-ui, sans-serif;
+  --background: #F3EEE4;
+  --foreground: #1A1612;
+  --card: #FBF8F2;
+  --card-foreground: #1A1612;
+  --popover: #FBF8F2;
+  --popover-foreground: #1A1612;
+  --primary: #1A1612;
+  --primary-foreground: #F3EEE4;
+  --secondary: #F3EEE4;
+  --secondary-foreground: #1A1612;
+  --muted: #E9E2D5;
+  --muted-foreground: #5E554A;
+  --accent: #E9E2D5;
+  --accent-foreground: #1A1612;
+  --border: #D6CCBB;
+  --input: #CFC3B0;
+  --ring: #BB264D;
+  --radius: 0.5rem;
+  --crimson: #A81F43;
+  --selection: #BB264D;
+  --selection-ink: #FFF;
+}
+
+.pt-italic { font-style: italic; color: var(--crimson); }
+.pt-rule { border-top: 1px solid var(--foreground); }
+
+.pt-program { position: relative; isolation: isolate; }
+.pt-program::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: color-mix(in oklab, var(--note) 22%, var(--background));
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pt-program:hover::before, .pt-program:focus-within::before { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) { .pt-program::before { transition: none; } }
+
+.corp { background: var(--foreground); color: var(--background); }
+.give-card, .slip { box-shadow: 0 1px 0 var(--border), 0 18px 40px -28px rgb(26 22 18 / 0.35); }
+.wa-btn { background: #1C7A4A; color: #fff; }
+.wa-btn:hover { background: #17643D; }
+.photo-slot { background: color-mix(in oklab, var(--muted) 60%, var(--background)); }

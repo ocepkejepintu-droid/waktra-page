@@ -1,0 +1,43 @@
+@import '@fontsource-variable/unbounded';
+@import '@fontsource-variable/hanken-grotesk';
+
+/* Panggung Malam: a dark stage. The only light comes from the five notes. */
+:root {
+  color-scheme: dark;
+  --display: 'Unbounded Variable', system-ui, sans-serif;
+  --body: 'Hanken Grotesk Variable', system-ui, sans-serif;
+  --background: #0B0B0E;
+  --foreground: #EEEBE5;
+  --card: #141418;
+  --card-foreground: #EEEBE5;
+  --popover: #18181D;
+  --popover-foreground: #EEEBE5;
+  --primary: #FACC58;
+  --primary-foreground: #17130A;
+  --secondary: #EEEBE5;
+  --secondary-foreground: #0B0B0E;
+  --muted: #1D1D23;
+  --muted-foreground: #A7A39B;
+  --accent: #24242B;
+  --accent-foreground: #EEEBE5;
+  --border: rgb(255 255 255 / 0.12);
+  --input: rgb(255 255 255 / 0.2);
+  --ring: #FACC58;
+  --radius: 0.875rem;
+  --selection: #FACC58;
+  --selection-ink: #17130A;
+}
+
+.give-card, .slip { background: var(--card); box-shadow: 0 30px 60px -40px rgb(0 0 0 / 0.9); }
+.corp { background: linear-gradient(120deg, #1D1A12, #141418 60%); border: 1px solid rgb(250 204 88 / 0.25); }
+.wa-btn { background: #25A85F; color: #06140B; }
+.wa-btn:hover { background: #2DBE6C; }
+.photo-slot { background: #121216; }
+
+/* Stage-light wash behind section headings: an offset, soft light, not a halo. */
+.spot { position: relative; isolation: isolate; }
+.spot::before {
+  content: ''; position: absolute; z-index: -1; inset: -30% -10% auto -10%; height: 140%;
+  background: radial-gradient(60% 50% at 20% 40%, color-mix(in oklab, var(--spot, #FACC58) 16%, transparent), transparent 70%);
+  pointer-events: none;
+}

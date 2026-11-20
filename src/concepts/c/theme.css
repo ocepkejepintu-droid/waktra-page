@@ -1,0 +1,50 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/lexend';
+
+/* Lima Warna: five flat colours, navy ink, everything feels pressable. */
+:root {
+  color-scheme: light;
+  --display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --body: 'Lexend Variable', system-ui, sans-serif;
+  --navy: #0B3D8C;
+  --background: #FFFFFF;
+  --foreground: #0E1B33;
+  --card: #FFFFFF;
+  --card-foreground: #0E1B33;
+  --popover: #FFFFFF;
+  --popover-foreground: #0E1B33;
+  --primary: #0B3D8C;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FACC58;
+  --secondary-foreground: #0E1B33;
+  --muted: #F3EFE8;
+  --muted-foreground: #4A5772;
+  --accent: #F3EFE8;
+  --accent-foreground: #0E1B33;
+  --border: #E6DAC4;
+  --input: #D9CBB2;
+  --ring: #0B3D8C;
+  --radius: 1rem;
+  --selection: #FACC58;
+  --selection-ink: #0E1B33;
+}
+
+.ink-light {
+  --foreground: #FFFFFF;
+  --muted-foreground: #E3E9F7;
+  --border: rgb(255 255 255 / 0.25);
+  color: var(--foreground);
+}
+.ink-light.on-crimson { --muted-foreground: #FBE3EA; }
+
+.give-card, .slip { border: 0; box-shadow: 0 2px 0 rgb(14 27 51 / 0.06), 0 24px 48px -28px rgb(11 61 140 / 0.35); }
+.corp { background: var(--navy); color: #fff; }
+.wa-btn { background: #1C7A4A; color: #fff; }
+.wa-btn:hover { background: #17643D; }
+.photo-slot { background: #fff; border-color: #E6DAC4; }
+
+/* Bento tile: the tile stays put; its face carries the tilt (pointer never loses its target). */
+.tile { perspective: 900px; }
+.tile-face { transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1); transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+.tile:hover .tile-face { box-shadow: 0 30px 50px -30px rgb(14 27 51 / 0.45); }
+@media (prefers-reduced-motion: reduce) { .tile-face { transform: none !important; transition: none; } }
