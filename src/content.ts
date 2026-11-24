@@ -188,6 +188,28 @@ const id = {
     ['Bunga Mawar Indah', ''],
     ['Bunga Mawar', ''],
   ] as [string, string][],
+  simple: {
+    trust: 'Yayasan berbadan hukum · SK Kemenkum AHU-0002835 · Satu rekening resmi atas nama yayasan',
+    heroCta: 'Jadi Kakak Asuh',
+    heroCta2: 'Lihat legalitas',
+    sticky: 'Jadi Kakak Asuh',
+    since: 'Sanggar sejak 2023 · Yayasan berbadan hukum sejak 2025 · TUK resmi LSK Musik untuk Kota Denpasar',
+    whyTitle: 'Kenapa kami butuh Anda',
+    why: [
+      'Biaya les murid naik turun dan tidak bisa menanggung anak dari keluarga prasejahtera.',
+      'Banyak orang tua hanya mampu membayar sebagian. Selisihnya selama ini ditanggung yayasan dan pendirinya.',
+      'Dukungan rutin menjaga kelas inklusi tetap berjalan dan menambah kursi beasiswa.',
+    ],
+    offerTitle: 'Jadi Kakak Asuh satu murid.',
+    offerLead: 'Anda menanggung sebagian biaya les bulanan seorang murid WAKTRA. Keluarganya tetap membayar bagiannya. Nominalnya Anda tentukan sendiri.',
+    offerPoints: ['Dukungan setiap bulan, nominal bebas', 'Kabar perkembangan belajar murid Anda', 'Tanda terima resmi dari yayasan'],
+    otherTitle: 'Atau dukung program lain',
+    proofTitle: 'Yang sudah berjalan',
+    songsSummary: '7 lagu karya murid sudah dirilis di platform musik digital.',
+    moreDetail: 'Lihat lagu dan komunitas yang kami dampingi',
+    legalFull: 'Data lengkap legalitas yayasan',
+    giveTitle: 'Dukung lewat transfer, lalu kabari kami di WhatsApp.',
+  },
 }
 
 export type Copy = typeof id
@@ -354,6 +376,28 @@ const en: Copy = {
     home: 'Home of WAKTRA Inclusive Music Studio, our Inclusive Education department',
     legal: 'SK Menkum AHU-0002835.AH.01.04.Tahun 2025 · NIB 0303250060646',
     address: 'Jl. Sekar Jepun VI No. 10, Kesiman Kertalangu, Kota Denpasar, Bali',
+  },
+  simple: {
+    trust: 'Registered legal foundation · Ministry of Law SK AHU-0002835 · One official account in the foundation\'s name',
+    heroCta: 'Become a Kakak Asuh',
+    heroCta2: 'See legal status',
+    sticky: 'Become a Kakak Asuh',
+    since: 'Studio since 2023 · Registered foundation since 2025 · Official LSK Musik test centre for Denpasar',
+    whyTitle: 'Why we need you',
+    why: [
+      'Lesson fees rise and fall, and cannot cover children from low-income families.',
+      'Many parents can pay only part. The foundation and its founder have covered the difference themselves.',
+      'Regular support keeps inclusive classes running and opens more scholarship places.',
+    ],
+    offerTitle: 'Become a Kakak Asuh for one student.',
+    offerLead: "You cover part of one WAKTRA student's monthly lessons. The family still pays its share. You choose the amount.",
+    offerPoints: ['Monthly support, any amount', "Updates on your student's progress", 'An official receipt from the foundation'],
+    otherTitle: 'Or support another programme',
+    proofTitle: 'Already happening',
+    songsSummary: '7 songs by our students are out on digital music platforms.',
+    moreDetail: 'See the songs and the communities we coach',
+    legalFull: "The foundation's full legal details",
+    giveTitle: 'Give by bank transfer, then tell us on WhatsApp.',
   },
 }
 

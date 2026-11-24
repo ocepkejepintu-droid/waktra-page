@@ -9,7 +9,7 @@ export type Geom = { x0: number; x1: number; base: number; maxH: number; waveY: 
 
 export function geometry(w: number, h: number): Geom {
   if (w >= 900) return { x0: w * 0.5, x1: w * 0.95, base: h * 0.8, maxH: h * 0.56, waveY: h * 0.3, amp: h * 0.08 }
-  return { x0: w * 0.06, x1: w * 0.94, base: h * 0.46, maxH: h * 0.3, waveY: h * 0.22, amp: h * 0.06 }
+  return { x0: w * 0.06, x1: w * 0.94, base: h * 0.42, maxH: h * 0.27, waveY: h * 0.2, amp: h * 0.05 }
 }
 
 export function barRect(g: Geom, i: number) {
@@ -44,7 +44,7 @@ export function StageField({ progress, reduce }: { progress: MotionValue<number>
       canvas.width = w * dpr; canvas.height = h * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       g = geometry(w, h)
-      const n = w < 640 ? 1500 : 3800
+      const n = w < 640 ? 1100 : 2600
       const old = ps
       ps = Array.from({ length: n }, (_, k) => {
         const c = k % 5

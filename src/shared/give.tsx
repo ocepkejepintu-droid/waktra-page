@@ -100,11 +100,16 @@ export function GiveProvider({ children }: { children: ReactNode }) {
     if (p === 'kakakasuh') setMonthly(true)
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
     document.getElementById('dukung')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })
-    setTimeout(() => document.getElementById('amount')?.focus({ preventScroll: true }), 600)
+    // On touch screens, focusing would pop the keyboard over the form the visitor just landed on.
+    if (!matchMedia('(pointer: coarse)').matches) setTimeout(() => document.getElementById('amount')?.focus({ preventScroll: true }), 600)
   }
 
   const value: GiveState = {
-    amount, setAmount, monthly, setMonthly, purpose, setPurpose, name, setName, paid, setPaid, message, pick,
+    amount, setAmount, monthly, setMonthly, purpose, name,
+    setPurpose: (p: PurposeKey) => {
+      setPurpose(p)
+      if (p === 'kakakasuh') setMonthly(true)
+    }, setName, paid, setPaid, message, pick,
     waHref: 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message),
     corpHref: 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(t.form.corpMsg),
     words: amount ? (lang === 'en' ? enWords(amount) : terbilang(amount)) : '',

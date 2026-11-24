@@ -101,9 +101,23 @@ export function GiveForm({ className }: { className?: string }) {
   }
 
   return (
-    <div className={cn('grid items-start gap-6 lg:grid-cols-[1.05fr_1fr]', className)}>
+    <div className={cn('grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]', className)}>
       <Card className="give-card">
-        <CardContent className="grid gap-7 p-6 sm:p-8">
+        <CardContent className="grid grid-cols-[minmax(0,1fr)] gap-7 p-6 sm:p-8">
+          <div className="grid gap-3">
+            <Label htmlFor="purpose" className="text-base">{f.purpose}</Label>
+            <Select value={g.purpose} onValueChange={(v) => g.setPurpose(v as PurposeKey)}>
+              <SelectTrigger id="purpose" className="w-full min-w-0 text-base data-[size=default]:h-12">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {PURPOSE_KEYS.map((k) => (
+                  <SelectItem key={k} value={k} className="py-2.5 text-base">{t.purposes[k]}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
           <div className="grid gap-3">
             <Label className="text-base">{f.freq}</Label>
             <ToggleGroup
@@ -115,7 +129,7 @@ export function GiveForm({ className }: { className?: string }) {
               className="w-full"
             >
               <ToggleGroupItem value="monthly" className="h-12 flex-1 text-base">{f.monthly}</ToggleGroupItem>
-              <ToggleGroupItem value="once" className="h-12 flex-1 text-base">{f.once}</ToggleGroupItem>
+              <ToggleGroupItem value="once" disabled={g.purpose === 'kakakasuh'} className="h-12 flex-1 text-base">{f.once}</ToggleGroupItem>
             </ToggleGroup>
           </div>
 
@@ -131,7 +145,7 @@ export function GiveForm({ className }: { className?: string }) {
                 value={raw}
                 onChange={(e) => onAmount(e.target.value)}
                 aria-describedby="amountWords amountHint"
-                className="font-display min-w-0 flex-1 bg-transparent py-3 pr-3 text-3xl tabular-nums outline-none placeholder:text-muted-foreground"
+                className="font-display w-0 min-w-0 flex-1 bg-transparent py-3 pr-3 text-3xl tabular-nums outline-none placeholder:font-sans placeholder:text-muted-foreground"
               />
             </div>
             <div className="flex flex-wrap gap-2">
@@ -141,30 +155,16 @@ export function GiveForm({ className }: { className?: string }) {
                   type="button"
                   variant={g.amount === p ? 'default' : 'outline'}
                   size="sm"
-                  className="h-9 rounded-full px-4 tabular-nums"
+                  className="h-11 rounded-full px-4 tabular-nums"
                   onClick={() => g.setAmount(p)}
                   aria-pressed={g.amount === p}
                 >
-                  {fmt(p / 1000, lang)}{lang === 'en' ? 'k' : 'rb'}
+                  {p >= 1e6 ? fmt(p / 1e6, lang) + (lang === 'en' ? 'm' : ' jt') : fmt(p / 1000, lang) + (lang === 'en' ? 'k' : 'rb')}
                 </Button>
               ))}
             </div>
             <p id="amountWords" aria-live="polite" className="min-h-[1.5em] text-sm text-muted-foreground italic">{g.words}</p>
             <p id="amountHint" className="text-sm text-muted-foreground">{f.amountHint}</p>
-          </div>
-
-          <div className="grid gap-3">
-            <Label htmlFor="purpose" className="text-base">{f.purpose}</Label>
-            <Select value={g.purpose} onValueChange={(v) => g.setPurpose(v as PurposeKey)}>
-              <SelectTrigger id="purpose" className="h-12 w-full text-base">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {PURPOSE_KEYS.map((k) => (
-                  <SelectItem key={k} value={k} className="py-2.5 text-base">{t.purposes[k]}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
           </div>
 
           <div className="grid gap-3">
@@ -197,7 +197,10 @@ export function GiveForm({ className }: { className?: string }) {
                   <Copy /> {f.copyAcct}
                 </Button>
               </div>
-              <div className="text-sm font-semibold">{f.holder}</div>
+              <div className="grid gap-0.5">
+                <div className="text-sm font-semibold">{f.holder}</div>
+                <div className="text-xs text-muted-foreground">{t.footer.legal}</div>
+              </div>
               <Separator />
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
